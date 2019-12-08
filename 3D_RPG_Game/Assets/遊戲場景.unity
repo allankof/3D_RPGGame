@@ -570,7 +570,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
+  m_BoundingSphereOverride: {x: 0, y: 1.1200566e-33, z: 0, w: 1.1200566e-33}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -773,7 +773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 148850, guid: ee2d107a34692a64e95ce85aed5e41f0, type: 3}
       propertyPath: m_Name
-      value: vThirdPersonCamera
+      value: "\u73A9\u5BB6"
       objectReference: {fileID: 0}
     - target: {fileID: 148850, guid: ee2d107a34692a64e95ce85aed5e41f0, type: 3}
       propertyPath: m_IsActive
@@ -1129,6 +1129,58 @@ PrefabInstance:
     - target: {fileID: 454036, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454036, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 454036, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 454036, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429983, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429983, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_Center.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429983, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_Height
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429983, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429984, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429984, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429984, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: distanceTrack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429984, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: distanceATK
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429984, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: rangeAttack
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088429984, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
+      propertyPath: delayAttack
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6b9ab8b6f2cea43963ea69decb1863, type: 3}
@@ -1693,7 +1745,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.24
+  m_Radius: 0.34
   m_Height: 1.84
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
@@ -1709,6 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b651f023ccbd947b82eb6dcaa8283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
 --- !u!1001 &2109487475
 PrefabInstance:
   m_ObjectHideFlags: 0
