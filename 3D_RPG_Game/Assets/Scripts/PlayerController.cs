@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
 
         ani.SetBool("走路開關", h != 0 || v != 0);
 
-        print("左右 :" + h);
-        print("上下 :" + v);
+        //print("左右 :" + h);
+        //print("上下 :" + v);
 
         ani.SetBool("跑步開關", Input.GetKey(KeyCode.LeftShift));
     }

@@ -8,11 +8,15 @@ public class NPC : MonoBehaviour
     public GameObject dialog;
     public Text textDialog;
     [Header("對話內容")]
-    public string dialogStart = "陌生人你好，請問可以幫我找到十個零件嗎？";
-    public string dialogNotComplete = "請問你還沒找到十個零件嗎？";
-    public string dialogComplete = "陌生人，謝謝你幫我找到十個零件。";
+    public string dialogStart = "陌生人你好，請問可以幫我找到五個零件嗎？";
+    public string dialogNotComplete = "請問你還沒找到五個零件嗎？";
+    public string dialogComplete = "陌生人，謝謝你幫我找到五個零件。";
     [Header("對話速度"), Range(0.001f, 5.5f)]
     public float dialogSpeed = 0.05f;
+    [Header("零件任務")]
+    public int propCurrent;
+    public int propTotal;
+    public Text propText;
 
     // 定義列舉
     public enum npcState
@@ -21,6 +25,25 @@ public class NPC : MonoBehaviour
     }
     // 實例化列舉
     public npcState _npcState;
+
+    private void Start()
+    {
+        propTotal = GameObject.FindGameObjectsWithTag("零件").Length;
+        propText.text = "零件 : 0 / " + propTotal;
+    }
+
+    /// <summary>
+    /// 取得零件
+    /// </summary>
+    public void GetProp()
+    {
+        propCurrent++;
+        propText.text = "零件 : " + propCurrent + " / " + propTotal;
+        if (propCurrent == propTotal)
+        {
+            _npcState = npcState.complete;
+        }
+    }
 
     /// <summary>
     /// 對話開始
@@ -34,6 +57,7 @@ public class NPC : MonoBehaviour
         {
             case npcState.start:
                 StartCoroutine(ShowDialog(dialogStart));
+                _npcState = npcState.notComplete;
                 break;
             case npcState.notComplete:
                 StartCoroutine(ShowDialog(dialogNotComplete));
