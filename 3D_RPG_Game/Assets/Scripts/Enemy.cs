@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
     [Header("基本屬性")]
-    public float atk = 20f;
-    public float hp = 250f;
+    public int attack = 20;
+    public int hp = 250;
     [Range(0f, 100f)]
     public float speed = 1.5f;
     [Range(0f, 100f), Tooltip("攻擊距離")]
@@ -19,7 +20,7 @@ public class Enemy : MonoBehaviour
     [Header("傷害間隔"), Range(0f, 5f)]
     public float delayAttack = 1f;
 
-    public int attack = 20;
+    public Renderer[] smr;
 
     private float timer;
 
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (ani.GetBool("死亡開關")) return;
         Track();
     }
 
@@ -99,7 +101,9 @@ public class Enemy : MonoBehaviour
             Idle();
         }
     }
-
+    /// <summary>
+    /// 延遲給予玩家怪物傷害值，避免剛舉手怪物就受傷
+    /// </summary>
     private void DelayAttack()
     {
         RaycastHit hit;    // 射線碰撞資訊
@@ -114,13 +118,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Hit()
+    public void Hit(int damage)
     {
-
+        ani.SetTrigger("受傷觸發");
+        hp -= damage;
+        if (hp <= 0) Dead();
     }
 
     private void Dead()
     {
+        ani.SetBool("死亡開關", true);
+        StartCoroutine(DeadEffect());
+        CancelInvoke("DelayAttack");
+    }
 
+    private IEnumerator DeadEffect()
+    {
+        float da = smr[0].material.GetFloat("_DissolveAmount");
+
+        while (da < 1)
+        {
+            da += 0.01f;
+            smr[0].material.SetFloat("_DissolveAmount", da);
+            smr[1].material.SetFloat("_DissolveAmount", da);
+            smr[2].material.SetFloat("_DissolveAmount", da);
+            yield return new WaitForSeconds(0.02f);
+        }
     }
 }
